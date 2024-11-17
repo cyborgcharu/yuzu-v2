@@ -16,12 +16,12 @@ const Teleprompter = () => {
 
   return (
     <div className="min-h-screen bg-gray-900 text-white p-4">
-      {!displayMode ? (
+      <div className="max-w-2xl mx-auto space-y-4">
+        {/* Text Input Section - Always visible */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.3 }}
-          className="max-w-2xl mx-auto space-y-4"
         >
           <div className="bg-gray-800 rounded-lg p-4">
             <h2 className="text-2xl mb-4">Script Editor</h2>
@@ -41,7 +41,10 @@ const Teleprompter = () => {
             </button>
           </div>
         </motion.div>
-      ) : (
+      </div>
+
+      {/* Display Mode Overlay */}
+      {displayMode && (
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
