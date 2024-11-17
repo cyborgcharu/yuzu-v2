@@ -1,7 +1,11 @@
+// GlassMockup.js
+'use client'
+
 import React from 'react';
 
 const GlassMockup = ({ scriptText }) => {
-  const toggleMenu = () => {
+  const toggleMenu = (e) => {
+    e.stopPropagation(); // Prevent click from bubbling up to parent
     // Add your menu toggle logic here
     console.log('Menu toggled');
   };
