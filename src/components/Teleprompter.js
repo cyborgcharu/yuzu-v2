@@ -28,7 +28,7 @@ const Teleprompter = () => {
           transition={{ duration: 0.3 }}
         >
           <div className="bg-gray-800 rounded-lg p-4">
-            <h2 className="text-2xl mb-4">Script Editor</h2>
+            <h2 className="text-2xl mb-4">Use Yuzu</h2>
             <textarea
               className="w-full h-64 p-4 bg-gray-700 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
               value={text}
