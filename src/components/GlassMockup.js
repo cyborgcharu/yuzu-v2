@@ -1,6 +1,6 @@
 import React from 'react';
 
-const GlassMockup = () => {
+const GlassMockup = ({ scriptText }) => {
   const toggleMenu = () => {
     // Add your menu toggle logic here
     console.log('Menu toggled');
@@ -10,7 +10,7 @@ const GlassMockup = () => {
     <div className="glass-frame">
       <div className="glass-content">
         <h1 className="glass-title">Hello, World!</h1>
-        <p className="glass-info">This is a mockup of Google Glass EE2.</p>
+        <p className="glass-info">{scriptText}</p>
       </div>
       <div className="glass-button" onClick={toggleMenu}>
         <img src="/menu-icon.png" alt="Menu" />

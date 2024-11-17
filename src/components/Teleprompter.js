@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { Eye, ArrowRight } from "lucide-react";
+import GlassMockup from "./GlassMockup";
 
 const Teleprompter = () => {
   const [text, setText] = useState("");
@@ -45,9 +46,7 @@ const Teleprompter = () => {
           className="fixed inset-0 bg-black flex items-center justify-center"
           onClick={() => setDisplayMode(false)}
         >
-          <div className="max-w-md text-white text-2xl text-center px-8">
-            {text || "No script content yet..."}
-          </div>
+          <GlassMockup scriptText={text} />
         </motion.div>
       )}
     </div>
