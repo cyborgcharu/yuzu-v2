@@ -1,11 +1,10 @@
 // src/app/page.js
-import GlassMockup from '../components/GlassMockup';
+import Teleprompter from '../components/Teleprompter';
 
 export default function Home() {
   return (
     <div>
-      {/* Render the GlassMockup component */}
-      <GlassMockup />
+      <Teleprompter />
     </div>
   );
 }
