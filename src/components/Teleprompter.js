@@ -8,16 +8,20 @@ import GlassMockup from "./GlassMockup";
 
 const Teleprompter = () => {
   const [text, setText] = useState("");
-  const [displayMode, setDisplayMode] = useState(false);
+  const [displayMode, setDisplayMode] = useState(false); // Make sure this is false
+  
+  console.log("Current displayMode:", displayMode); // Add this log
+  console.log("Current text:", text); // Add this log
 
   const handleTextChange = (e) => {
     setText(e.target.value);
   };
 
+  // Add a test function to the main div
   return (
-    <div className="min-h-screen bg-gray-900 text-white p-4">
-      <div className="max-w-2xl mx-auto space-y-4">
-        {/* Text Input Section - Always visible */}
+    <div className="min-h-screen bg-gray-900 text-white p-4" onClick={() => console.log("Main div clicked")}>
+      <div className="max-w-2xl mx-auto space-y-4 bg-red-500"> {/* Added red background temporarily for visibility */}
+        {/* Text Input Section */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -43,7 +47,6 @@ const Teleprompter = () => {
         </motion.div>
       </div>
 
-      {/* Display Mode Overlay */}
       {displayMode && (
         <motion.div
           initial={{ opacity: 0 }}
