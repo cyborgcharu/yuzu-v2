@@ -20,6 +20,7 @@ const Teleprompter = () => {
             width={160}
             height={40}
             priority
+            unoptimized
           />
         </Link>
 
