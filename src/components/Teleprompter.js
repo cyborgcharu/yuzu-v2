@@ -11,16 +11,15 @@ const Teleprompter = () => {
   const [displayMode, setDisplayMode] = useState(false);
 
   return (
-    <div className="min-h-screen bg-white p-4">
-      <div className="max-w-4xl mx-auto space-y-6">
-        <Link href="https://useyuzu.com" className="block w-40 mx-auto mb-8">
+    <div className="min-h-screen bg-white p-8">
+      <div className="max-w-4xl mx-auto">
+        <Link href="https://useyuzu.com" className="block w-[250px] h-[75px] mb-12 relative mx-auto">
           <Image 
             src="/yuzu.png" 
             alt="Yuzu Logo" 
-            width={160}
-            height={40}
+            fill
+            style={{ objectFit: 'contain' }}
             priority
-            unoptimized
           />
         </Link>
 
@@ -31,14 +30,14 @@ const Teleprompter = () => {
         >
           <div className="relative">
             <textarea
-              className="w-full h-96 p-6 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-black text-lg"
+              className="w-full h-48 px-6 py-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-black text-lg resize-none"
               value={text}
               onChange={(e) => setText(e.target.value)}
               placeholder="Enter your script here..."
             />
             <button
               onClick={() => setDisplayMode(true)}
-              className="absolute right-4 bottom-4 px-4 py-2 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 text-black flex items-center gap-2"
+              className="absolute right-4 bottom-4 px-4 py-2 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 text-black flex items-center gap-2 text-sm"
             >
               <Eye size={16} />
               Preview Display Mode
