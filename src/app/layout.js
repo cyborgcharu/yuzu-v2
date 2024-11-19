@@ -5,7 +5,7 @@ import './globals.css'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata = {
-  title: 'Yuzu :: Teleprompter',
+  title: 'yuzu :: teleprompter',
   description: 'Real-time script management',
   icons: {
     icon: '/favicon-16x16.png',
