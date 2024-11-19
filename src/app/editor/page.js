@@ -1,7 +1,7 @@
 'use client';
 import { useState, useEffect } from 'react';
 import { ref, onValue, set } from 'firebase/database';
-import { database } from '@/lib/firebase';  // Use your existing Firebase setup
+import { database } from '../../lib/firebase';  // Use your existing Firebase setup
 
 export default function Editor() {
   const [script, setScript] = useState('');
