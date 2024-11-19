@@ -6,7 +6,12 @@ const inter = Inter({ subsets: ['latin'] })
 
 export const metadata = {
   title: 'Yuzu :: Teleprompter',
-  description: 'Real-time script management'
+  description: 'Real-time script management',
+  icons: {
+    icon: '/yuzu.png',
+    shortcut: '/yuzu.png',
+    apple: '/yuzu.png'
+  }
 }
 
 export default function RootLayout({ children }) {
