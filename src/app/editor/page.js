@@ -28,6 +28,9 @@ export default function Editor() {
         }
       });
 
+      const oldRef = database.ref('adddelete');
+      oldRef.remove();
+
       return () => scriptRef.off();
     };
 
