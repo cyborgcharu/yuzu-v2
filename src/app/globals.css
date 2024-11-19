@@ -3,6 +3,13 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  html {
+    font-family: Avenir, system-ui, sans-serif;
+  }
+}
+
+/* glass styles */
 .glass-frame {
   width: 640px;
   height: 360px;
@@ -14,11 +21,13 @@
   align-items: center;
   position: relative;
   overflow: hidden;
+  font-family: Avenir, system-ui, sans-serif;
 }
 
 .glass-content {
   text-align: center;
   padding: 20px;
+  font-family: Avenir, system-ui, sans-serif;
 }
 
 .glass-title {
@@ -26,12 +35,14 @@
   font-weight: 500;
   margin-bottom: 10px;
   color: #fff;
+  font-family: Avenir, system-ui, sans-serif;
 }
 
 .glass-info {
   font-size: 18px;
   font-weight: 300;
   color: #fff;
+  font-family: Avenir, system-ui, sans-serif;
 }
 
 .glass-button {
