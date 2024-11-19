@@ -14,7 +14,7 @@ const Teleprompter = () => {
  const [displayMode, setDisplayMode] = useState(false);
 
  useEffect(() => {
-   const scriptRef = ref(database, 'adddelete/script/current-script');
+   const scriptRef = ref(database, 'script/current-script');
    
    onValue(scriptRef, (snapshot) => {
      setText(snapshot.val());
@@ -29,7 +29,7 @@ const Teleprompter = () => {
  const handleTextChange = (e) => {
    const newText = e.target.value;
    setText(newText);
-   set(ref(database, 'adddelete/script/current-script'), newText);
+   set(ref(database, 'script/current-script'), newText);
  };
 
  return (
