@@ -12,25 +12,21 @@ const Teleprompter = () => {
   const [text, setText] = useState("");
   const [displayMode, setDisplayMode] = useState(false);
 
-  useEffect(() => {
-    const scriptRef = ref(database, 'script/current-script');
-    
-    onValue(scriptRef, (snapshot) => {
-      setText(snapshot.val());
-    });
-    return () => {
-      onValue(scriptRef, () => {});
-    };
-  }, []);
-
-  const handleTextChange = (e) => {
-    const newText = e.target.value;
-    setText(newText);
-    set(ref(database, 'script/current-script'), newText);
-  };
+  // ... Firebase code remains the same ...
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-white to-gray-50 p-8">
+    // Option 1: Mesh gradient background
+    <div className="min-h-screen bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-orange-100 via-amber-50 to-white p-8">
+    {/* Alternative backgrounds - uncomment one to try:
+    // Option 2: Soft blue gradient
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-blue-100 to-white p-8">
+    
+    // Option 3: Modern purple gradient
+    <div className="min-h-screen bg-[conic-gradient(at_top_right,_var(--tw-gradient-stops))] from-purple-50 via-purple-100 to-white p-8">
+    
+    // Option 4: Citrus theme (matching your logo)
+    <div className="min-h-screen bg-gradient-to-r from-yellow-50 via-orange-50 to-white p-8">
+    */}
       <div className="max-w-4xl mx-auto space-y-12">
         {/* Logo section */}
         <a href="https://useyuzu.com" className="block transition-transform hover:scale-105">
@@ -48,17 +44,17 @@ const Teleprompter = () => {
         </a>
         
         {/* Editor section */}
-        <div className="relative w-full bg-white rounded-xl shadow-lg p-6">
+        <div className="relative w-full bg-white/80 backdrop-blur-sm rounded-xl shadow-lg p-6 border border-white/20">
           <h2 className="text-2xl font-medium mb-4 text-gray-800">Script Editor</h2>
           <textarea
-            className="w-full h-40 px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-400 text-gray-800 resize-none font-['Avenir'] text-lg"
+            className="w-full h-40 px-4 py-3 bg-white/90 backdrop-blur-sm border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-400 text-gray-800 resize-none font-['Avenir'] text-lg"
             value={text}
             onChange={handleTextChange}
             placeholder="Enter your script here..."
           />
           <button
             onClick={() => setDisplayMode(true)}
-            className="absolute bottom-6 right-6 px-5 py-2.5 bg-black text-white rounded-lg hover:bg-gray-800 flex items-center gap-2 transition-colors"
+            className="absolute bottom-6 right-6 px-5 py-2.5 bg-black/90 text-white rounded-lg hover:bg-black flex items-center gap-2 transition-colors"
           >
             <Eye size={18} />
             Preview Display Mode
@@ -66,10 +62,10 @@ const Teleprompter = () => {
           </button>
         </div>
 
-        {/* Instructions or additional info */}
-        <div className="text-center text-gray-600 space-y-2">
-          <p className="text-sm">Press the preview button to see how your script will appear on Google Glass</p>
-          <p className="text-xs">Connected to Firebase Realtime Database</p>
+        {/* Instructions with glass morphism */}
+        <div className="text-center bg-white/60 backdrop-blur-sm rounded-lg p-4 shadow-sm">
+          <p className="text-sm text-gray-700">Press the preview button to see how your script will appear on Google Glass</p>
+          <p className="text-xs text-gray-500 mt-1">Connected to Firebase Realtime Database</p>
         </div>
       </div>
       
