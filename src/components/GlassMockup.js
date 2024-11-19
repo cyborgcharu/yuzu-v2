@@ -12,11 +12,11 @@ const GlassMockup = ({ scriptText }) => {
 
   return (
     <div className="glass-frame">
-      <div className="glass-content">
-        <h1 className="glass-title">Welcome Marc!</h1>
-        <p className="glass-info">{scriptText}</p>
+      <div className="glass-content font-['Avenir']">
+        <h1 className="glass-title font-['Avenir']">Welcome Marc!</h1>
+        <p className="glass-info font-['Avenir']">{content}</p>
       </div>
-      <div className="glass-button" onClick={toggleMenu}>
+      <div className="glass-button">
         <img src="/menu-icon.png" alt="Menu" />
       </div>
     </div>

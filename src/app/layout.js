@@ -1,5 +1,4 @@
 // src/app/layout.js
-import { Inter } from 'next/font/google'
 import './globals.css'
 import './fonts.css'
 
@@ -18,7 +17,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className="font-sans antialiased">{children}</body>
+      <body style={{ fontFamily: 'Avenir, system-ui, sans-serif' }}>{children}</body>
     </html>
   )
 }
