@@ -1,37 +1,26 @@
 'use client';
-import { useEffect, useState } from 'react';
+import { useState, useEffect } from 'react';
+import { ref, onValue, set } from 'firebase/database';
+import { database } from '@/lib/firebase';  // Use your existing Firebase setup
 
 export default function Editor() {
   const [script, setScript] = useState('');
   const [preview, setPreview] = useState('');
 
   useEffect(() => {
-    const initFirebase = async () => {
-      const firebase = (await import('firebase/compat/app')).default;
-      await import('firebase/compat/database');
-      
-      if (!firebase.apps.length) {
-        firebase.initializeApp({
-          databaseURL: "https://yuzu-ccca0-default-rtdb.firebaseio.com",
-        });
+    const scriptRef = ref(database, 'script/current-script');
+    
+    const unsubscribe = onValue(scriptRef, (snapshot) => {
+      const value = snapshot.val();
+      console.log('Received value from Firebase:', value);
+      if (value) {
+        setScript(value);
+        setPreview(value);
       }
+    });
 
-      const database = firebase.database();
-      const scriptRef = database.ref('script');
-      
-      // Listen for changes
-      scriptRef.on('value', (snapshot) => {
-        const data = snapshot.val();
-        if (data?.['current-script']) {
-          setScript(data['current-script']);
-          setPreview(data['current-script']);
-        }
-      });
-
-      return () => scriptRef.off();
-    };
-
-    initFirebase();
+    // Cleanup subscription
+    return () => unsubscribe();
   }, []);
 
   const handleScriptChange = async (event) => {
@@ -40,16 +29,9 @@ export default function Editor() {
     setPreview(newScript);
     
     try {
-      const firebase = (await import('firebase/compat/app')).default;
-      const database = firebase.database();
-      
-      // Only update the script node
-      await database.ref('script').set({
-        'current-script': newScript
-      });
-      
-      // Optionally, log success
-      console.log('Script updated successfully');
+      const scriptRef = ref(database, 'script/current-script');
+      await set(scriptRef, newScript);
+      console.log('Script updated successfully:', newScript);
     } catch (error) {
       console.error('Error updating script:', error);
     }
