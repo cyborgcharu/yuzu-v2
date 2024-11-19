@@ -8,9 +8,9 @@ export const metadata = {
   title: 'Yuzu :: Teleprompter',
   description: 'Real-time script management',
   icons: {
-    icon: '/yuzu.png',
-    shortcut: '/yuzu.png',
-    apple: '/yuzu.png'
+    icon: '/favicon-16x16.png',
+    shortcut: '/favicon-16x16.png',
+    apple: '/favicon-16x16.png'
   }
 }
 
