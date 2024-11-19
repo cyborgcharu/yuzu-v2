@@ -12,21 +12,31 @@ const Teleprompter = () => {
   const [text, setText] = useState("");
   const [displayMode, setDisplayMode] = useState(false);
 
-  // ... Firebase code remains the same ...
+  useEffect(() => {
+    const scriptRef = ref(database, 'script/current-script');
+    
+    onValue(scriptRef, (snapshot) => {
+      setText(snapshot.val() || "");
+    });
+
+    return () => {
+      onValue(scriptRef, () => {});
+    };
+  }, []);
+
+  const handleTextChange = async (e) => {
+    const newText = e.target.value;
+    setText(newText);
+    
+    try {
+      await set(ref(database, 'script/current-script'), newText);
+    } catch (error) {
+      console.error('Error updating script:', error);
+    }
+  };
 
   return (
-    // Option 1: Mesh gradient background
     <div className="min-h-screen bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-orange-100 via-amber-50 to-white p-8">
-    {/* Alternative backgrounds - uncomment one to try:
-    // Option 2: Soft blue gradient
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-blue-100 to-white p-8">
-    
-    // Option 3: Modern purple gradient
-    <div className="min-h-screen bg-[conic-gradient(at_top_right,_var(--tw-gradient-stops))] from-purple-50 via-purple-100 to-white p-8">
-    
-    // Option 4: Citrus theme (matching your logo)
-    <div className="min-h-screen bg-gradient-to-r from-yellow-50 via-orange-50 to-white p-8">
-    */}
       <div className="max-w-4xl mx-auto space-y-12">
         {/* Logo section */}
         <a href="https://useyuzu.com" className="block transition-transform hover:scale-105">
