@@ -6,7 +6,7 @@ import { motion } from "framer-motion";
 import { Eye, ArrowRight } from "lucide-react";
 import GlassMockup from "./GlassMockup";
 import Image from 'next/image';
-import { database } from './firebase';
+import { database } from '../lib/firebase';
 import { ref, onValue, set } from 'firebase/database';
 
 const Teleprompter = () => {
