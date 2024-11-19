@@ -13,18 +13,18 @@ export default function Editor() {
 
       if (!firebase.apps.length) {
         firebase.initializeApp({
-          databaseURL: "https://your-project.firebaseio.com",
+          databaseURL: "https://yuzu-ccca0-default-rtdb.firebaseio.com",
         });
       }
 
       const database = firebase.database();
-      const scriptRef = database.ref('glassScript');
+      const scriptRef = database.ref('script');
       
       scriptRef.on('value', (snapshot) => {
         const data = snapshot.val();
         if (data) {
-          setScript(data.content);
-          setPreview(data.content);
+          setScript(data['current-script']);
+          setPreview(data['current-script']);
         }
       });
 
@@ -40,10 +40,10 @@ export default function Editor() {
     
     const firebase = (await import('firebase/compat/app')).default;
     const database = firebase.database();
-    const scriptRef = database.ref('glassScript');
+    const scriptRef = database.ref('script');
     
     scriptRef.set({
-      content: newScript,
+      'current-script': newScript,
       timestamp: Date.now()
     });
   };
